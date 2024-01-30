@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <style>
+        .loading {
+            width: 100%;
+            height: 100vh;
+            z-index: 5;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 36px;
+        }
+
+        button:disabled {
+            background-color: #ccc !important;
+            border-color: #ccc !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="loading" v-if="loading">
+            <div>Loading</div>
+        </div>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <div class="ms-auto">
+                    <button class="btn btn-success" type="button" @click="connect()" v-if="!walletAddress">connect</button>
+                    <div v-else class="d-flex align-items-center">
+                        <button class="btn btn-info" @click="refresh">Refresh</button>
+                        <p class="mb-0 mx-2">{{walletAddress}}</p>
+                        <button class="btn btn-danger " @click="disconnect">logout</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex align-items-start">
+                        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <button class="nav-link active" id="v-pills-monster-tab" data-bs-toggle="pill" data-bs-target="#v-pills-monster" type="button" role="tab" aria-controls="v-pills-monster" aria-selected="true">monster</button>
+                            <button class="nav-link" id="v-pills-asset-tab" data-bs-toggle="pill" data-bs-target="#v-pills-asset" type="button" role="tab" aria-controls="v-pills-asset" aria-selected="false">asset</button>
+                            <button class="nav-link" id="v-pills-land-tab" data-bs-toggle="pill" data-bs-target="#v-pills-land" type="button" role="tab" aria-controls="v-pills-land" aria-selected="false" land>land</button>
+                            <button class="nav-link" id="v-pills-token-tab" data-bs-toggle="pill" data-bs-target="#v-pills-token" type="button" role="tab" aria-controls="v-pills-token" aria-selected="false" token>token</button>
+                        </div>
+                        <div class="tab-content flex-fill" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-monster" role="tabpanel" aria-labelledby="v-pills-monster-tab" tabindex="0">
+                                <div class="row" v-if="monster.length > 0">
+                                    <div class="col-3 mb-4" v-for="element in monster" :key="element._id">
+                                        <div class="card">
+                                            <div class="card-header">{{element.monsterId.name}}</div>
+                                            <div class="card-img text-center py-4">
+                                                <img :src="`https://testapi.bitmonsternft.com/images/monsters/${element.monsterId.monUI}.png`" class="img-fluid mx-auto" style="max-height: 120px">
+                                            </div>
+                                            <div class="card-body border-top">
+                                                <div>{{element._id}}</div>
+                                                <div>Mint Status : {{!element.status.default}}</div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <button class="btn btn-info form-control" @click="mintMonster(element._id)" :disabled="element.status.default">Destroy and Mint</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-else class="text-center">
+                                    <p>- NO DATA -</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-asset" role="tabpanel" aria-labelledby="v-pills-asset-tab" tabindex="0">
+                                <div class="row" v-if="asset.length > 0">
+                                    <div class="col-3 mb-4" v-for="element in asset" :key="element._id">
+                                        <div class="card">
+                                            <div class="card-header">{{element.assetId.name}}</div>
+                                            <div class="card-img text-center py-4">
+                                                <img :src="`https://testapi.bitmonsternft.com/images/items/${element.assetId.no}.png`" class="img-fluid mx-auto" style="max-height: 120px">
+                                            </div>
+                                            <div class="card-body border-top">
+                                                <div v-for="amount in element.amount">
+                                                    {{amount.default}} : {{amount.stack}}
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <!-- {{element.status.default}} -->
+                                                <button class="btn btn-info form-control" @click="mintItem(element.assetId.id,1)">Destroy and Mint</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-else class="text-center">
+                                    <p>- NO DATA -</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-land" role="tabpanel" aria-labelledby="v-pills-land-tab" tabindex="0">
+                                <div class="row" v-if="land.length > 0">
+                                    <div class="col-3 mb-4" v-for="element in land" :key="element._id">
+                                        <div class="card">
+                                            <div class="card-header">Zone : {{element.zone}}, Index : {{element.landCode.indexChar}}{{element.index}}</div>
+                                            <div class="card-img text-center py-4">
+                                                <img :src="`https://testapi.bitmonsternft.com/images/lands/${element.landCode._id}.png`" class="img-fluid mx-auto" style="max-height: 120px">
+                                            </div>
+                                            <div class="card-body border-top">
+                                                <div>Active : {{element.active}}</div>
+                                                <div>Land Code : {{element.landCode._id}}</div>
+                                                <div>Land Class : {{element.landClass._id}}</div>
+                                                <div>Max Item : {{element.landClass.maxItem}}</div>
+                                                <div>Mint Status : {{!element.default}}</div>
+                                                <!-- <div v-for="amount in element.amount">
+                                                    {{amount.default}} : {{amount.stack}}
+                                                </div> -->
+                                            </div>
+                                            <div class="card-footer">
+                                                <!-- {{element.status.default}} -->
+                                                <button class="btn btn-info form-control" @click="mintLand(element.id)" :disabled="element.default && !element.active">Destroy and Mint</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-else class="text-center">
+                                    <p>- NO DATA -</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-token" role="tabpanel" aria-labelledby="v-pills-token-tab" tabindex="0">
+                                <div class="row" v-if="token.length > 0">
+                                    <div class="col-12">Token stack</div>
+                                    <div class="col-4 mb-4" v-for="element in token" :key="element._id">
+                                        <div class="card">
+                                            <div class="card-header">Token : {{element.token}}</div>
+                                            <div class="card-body border-top">
+                                                <div>Reward : {{element.reward}}</div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <!-- {{element.status.default}} -->
+                                                <button class="btn btn-info form-control" @click="mintToken(element.token)" :disabled="element.token.amount">Claim</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-else class="text-center">
+                                    <p>- NO DATA -</p>
+                                </div>
+
+                                <div class="row" v-if="user?.mockToken">
+                                    <div class="col-12">Token user</div>
+                                    <div class="col-4 mb-4" v-for="(element,index) in user.mockToken" :key="element._id">
+                                        <div class="card">
+                                            <div class="card-header">Token : {{index}}</div>
+                                            <div class="card-body border-top">
+                                                <div>Amount : {{element}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" v-if="pool">
+                                    <div class="col-12">Token pool</div>
+                                    <div class="col-4 mb-4" v-for="element in pool" :key="element._id">
+                                        <div class="card">
+                                            <div class="card-header">Token : {{element.token}} | Type : {{element.type}}</div>
+                                            <div class="card-body border-top">
+                                                <div>Amount : {{element.amount}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script>
+    // const domain = "https://testapi.bitmonsternft.com/api/v1";
+    const domain = "http://localhost:3001/api/v1";
+    const contract_game = "0x64f1D0F6b0c7dC2c93eBe9E943Ac35E72219903C"
+    // const domain = "http://128.199.158.9:3100/api/v1";
+    var app = new Vue({
+        el: "#app",
+        data: {
+            loading: true,
+            walletAddress: null,
+            accessToken: null,
+            user: null,
+            monster: [],
+            asset: [],
+            land: [],
+            token: [],
+            pool: [],
+            provider: null,
+            abi_game: null
+        },
+
+        methods: {
+            async signer() {
+                if (window.ethereum) {
+                    this.provider = provider = new ethers.providers.Web3Provider(window.ethereum)
+                    await this.provider.send("eth_requestAccounts", []);
+                    const signer = this.provider.getSigner()
+                    this.walletAddress = await signer.getAddress()
+                } else {
+                    alert("Please install metamask")
+                }
+            },
+
+            async connect() {
+                if (window.ethereum) {
+                    await this.signer();
+
+                    const {
+                        data
+                    } = await axios.post(domain + '/users/login', {
+                        "walletAddress": this.walletAddress
+                    })
+
+                    this.accessToken = data.accessToken
+                    this.user = data.userData
+                    localStorage.setItem('accessToken', data.accessToken);
+                } else {
+                    alert("Please install metamask")
+                }
+            },
+
+            disconnect() {
+                localStorage.setItem('accessToken', "");
+                this.accessToken = null
+            },
+
+            async getMonster() {
+                const {
+                    data
+                } = await axios.get(domain + '/farms/getWithOwner', {
+                    headers: {
+                        Authorization: `Bearer ${this.accessToken}`
+                    }
+                });
+                this.monster = data.monsters
+            },
+
+            async getAsset() {
+                const {
+                    data
+                } = await axios.get(domain + '/Inventory/getWithOwner', {
+                    headers: {
+                        Authorization: `Bearer ${this.accessToken}`
+                    }
+                });
+                this.asset = data.assets
+            },
+
+            async getLand() {
+                const {
+                    data
+                } = await axios.get(domain + '/userLands/getWithOwner', {
+                    headers: {
+                        Authorization: `Bearer ${this.accessToken}`
+                    },
+                    params: {
+                        "active": false
+                    }
+                });
+                this.land = data
+            },
+
+            async getToken() {
+                const {
+                    data
+                } = await axios.get(domain + '/claim/latest', {
+                    headers: {
+                        Authorization: `Bearer ${this.accessToken}`
+                    }
+                });
+                this.token = data
+            },
+
+            async getPool() {
+                const {
+                    data
+                } = await axios.get(domain + '/pool');
+                this.pool = data
+            },
+
+            async mintMonster(farmId) {
+                this.loading = true
+                const contract = new ethers.Contract(contract_game, this.abi_game, this.provider.getSigner());
+                const {
+                    data
+                } = await axios.post(domain + '/sig/monster', {
+                    "farmId": farmId
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${this.accessToken}`
+                    }
+                })
+                const tx = await contract.mintMonsterWithGame(data.monsterId, data.nonce.toString(), data.signature);
+                console.log("tx", tx);
+                const result = await tx.wait();
+                if (result.status == 1) {
+                    const {
+                        data
+                    } = await axios.post(domain + '/sig/confirmMonster', {
+                        "farmId": farmId
+                    }, {
+                        headers: {
+                            Authorization: `Bearer ${this.accessToken}`
+                        }
+                    })
+                    console.log(data);
+                    data.nModified == 1 ? await this.getMonster() : "";
+                }
+                this.loading = false
+            },
+
+            async mintItem(itemId, amount) {
+                this.loading = true
+                const contract = new ethers.Contract(contract_game, this.abi_game, this.provider.getSigner());
+                const {
+                    data
+                } = await axios.post(domain + '/sig/item', {
+                    "itemId": itemId,
+                    "amount": amount,
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${this.accessToken}`
+                    }
+                })
+                console.log(data);
+                const tx = await contract.mintItemWithGame(data.itemId, data.amount, data.nonce.toString(), data.signature);
+                console.log("tx", tx);
+                this.loading = false
+            },
+
+            async mintLand(userLandId) {
+                this.loading = true
+                console.log("userLandId", userLandId);
+                const contract = new ethers.Contract(contract_game, this.abi_game, this.provider.getSigner());
+                const {
+                    data
+                } = await axios.post(domain + '/sig/land', {
+                    "userLandId": userLandId
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${this.accessToken}`
+                    }
+                })
+                const tx = await contract.mintLandWithGame(data.userLandId, data.nonce.toString(), data.signature);
+                console.log("tx", tx);
+                this.loading = false
+            },
+
+            async mintToken(token) {
+                try {
+                    this.loading = true
+                    console.log("token", token);
+                    const contract = new ethers.Contract(contract_game, this.abi_game, this.provider.getSigner());
+                    const {
+                        data
+                    } = await axios.post(domain + '/sig/tokenStack', {
+                        token
+                    }, {
+                        headers: {
+                            Authorization: `Bearer ${this.accessToken}`
+                        }
+                    })
+
+                    if (token !== "RBS") {
+                        const tx = token == "DMS" ?
+                            await contract.mintTokenDMSWithGame(data.amountWei, data.nonce.toString(), data.signature) :
+                            await contract.mintTokenDGSWithGame(data.amountWei, data.nonce.toString(), data.signature);
+                        console.log("tx", tx);
+                        const result = await tx.wait();
+                        if (result.status == 1) {
+                            await axios.post(domain + '/sig/confirmStackToken', {
+                                "token": token,
+                                "amount": data.amount,
+                            }, {
+                                headers: {
+                                    Authorization: `Bearer ${this.accessToken}`
+                                }
+                            })
+                        }
+                    }
+                    await this.getAccount()
+                    await this.getToken()
+                    this.loading = false
+                } catch (error) {
+                    this.loading = false
+                }
+            },
+
+            async getAccount() {
+                const {
+                    data
+                } = await axios.get(domain + '/users/account', {
+                    headers: {
+                        Authorization: `Bearer ${this.accessToken}`
+                    }
+                })
+                this.user = data.user
+            },
+
+            async refresh() {
+                try {
+
+
+                    this.loading = true
+                    await this.getAccount()
+                    await this.getMonster()
+                    await this.getAsset()
+                    await this.getLand()
+                    await this.getToken()
+                    await this.getPool()
+                    this.loading = false
+                } catch (error) {
+                    this.loading = false
+                }
+            },
+
+            parseJwt(token) {
+                var base64Url = token.split('.')[1];
+                var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+
+                return JSON.parse(jsonPayload);
+            },
+
+            async fetchTokenStack() {
+                console.log('call fetchTokenStack');
+                const ONE_MIN = 1000 * 60 * 1;
+                const msToNextRoundedOneMin = ONE_MIN - (Date.now() % ONE_MIN) + 1000;
+                console.log(msToNextRoundedOneMin);
+                setTimeout(() => {
+                    this.getToken();
+                    console.log('It is now rounded 1 min');
+                    setInterval(() => {
+                        console.log('every 1 min');
+                        this.getToken();
+                    }, ONE_MIN);
+                }, msToNextRoundedOneMin);
+            }
+        },
+        watch: {
+            async accessToken() {
+                if (this.accessToken != null) {
+                    await this.refresh()
+                } else {
+                    this.walletAddress = null
+                    this.user = null
+                    this.monster = []
+                    this.asset = []
+                    this.land = []
+                    this.token = []
+                    this.pool = []
+                }
+            }
+        },
+
+        async created() {
+            const {
+                data
+            } = await axios.get('../abi/Game.json')
+            if (data.length > 0) {
+                this.abi_game = data
+            }
+            if (localStorage.getItem('accessToken')) {
+                try {
+                    this.accessToken = localStorage.getItem('accessToken');
+                    await this.connect();
+                    await this.signer()
+                    const dataAccessToken = this.parseJwt(this.accessToken);
+                    this.walletAddress = dataAccessToken.walletAddress
+                    this.fetchTokenStack();
+                } catch (e) {
+                    console.log(e);
+                }
+            }
+            this.loading = false
+        }
+
+
+    })
+</script>
+
+</html>

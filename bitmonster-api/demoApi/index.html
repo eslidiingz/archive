@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <div class="ms-auto">
+                    <button class="btn btn-success" type="button" @click="connect()" v-if="!walletAddress">connect</button>
+                    <div v-else>{{walletAddress}}</div>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-4 mt-4" v-for="element in monster" :key="element._id">
+                    <div class="card">
+                        <div class="card-header">{{element.monsterId.name}}</div>
+                        <div class="card-img">
+                            <img :src="`https://testapi.bitmonsternft.com/images/monsters/${element.monsterId.monUI}.png`" class="img-fluid">
+                        </div>
+                        <div class="card-body">
+
+                        </div>
+                        <div class="card-footer">
+                            {{element.status.default}}
+                            <button class="btn btn-info form-control" @click="mintMonster(element._id)" :disabled="element.status.default">Destroy and Mint</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script>
+    // const domain = "https://testapi.bitmonsternft.com/api/v1";
+    const domain = "http://localhost:3001/api/v1";
+    const contract_game = "0x8aa60A970555CF280e10C9862C37fd09b07f5E11"
+    // const domain = "http://128.199.158.9:3100/api/v1";
+    var app = new Vue({
+        el: "#app",
+        data: {
+            walletAddress: null,
+            accessToken: null,
+            user: null,
+            monster: null,
+            inputTest: "",
+            provider: null,
+            abi_game: null
+        },
+        methods: {
+            async connect() {
+                console.log("click")
+                this.provider = provider = new ethers.providers.Web3Provider(window.ethereum)
+                await this.provider.send("eth_requestAccounts", []);
+                const signer = this.provider.getSigner()
+                this.walletAddress = await signer.getAddress()
+                await axios.post(domain + '/users/login', {
+                        "walletAddress": this.walletAddress
+                    })
+                    .then(response => {
+                        this.accessToken = response.data.accessToken
+                        this.user = response.data.userData
+
+                        console.log(response)
+                    }).catch(error => {
+                        console.log(response)
+                    })
+            },
+            async getMonster() {
+                const {
+                    data
+                } = await axios.get(domain + '/farms/getWithOwner', {
+                    headers: {
+                        Authorization: `Bearer ${this.accessToken}`
+                    }
+                });
+                console.log(data);
+                this.monster = data.monsters
+            },
+            async mintMonster(farmId) {
+                const contract = new ethers.Contract(contract_game, this.abi_game, this.provider.getSigner());
+                const {
+                    data
+                } = await axios.post(domain + '/sig/monster', {
+                    "farmId": farmId
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${this.accessToken}`
+                    }
+                })
+                const tx = await contract.mintWithGame(data.monsterId, data.nonce.toString(), data.signature);
+                console.log("tx", tx);
+            }
+        },
+        watch: {
+            accessToken() {
+                this.getMonster()
+            }
+        },
+        async created() {
+            const {
+                data
+            } = await axios.get('./abi_contract_game.json')
+            if (data.length > 0) {
+                this.abi_game = data
+            }
+
+        }
+    })
+</script>
+
+</html>

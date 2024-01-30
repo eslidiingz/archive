@@ -1,0 +1,6 @@
+_id,maxItem,sellToken,price
+Legendary,30,RBS,40
+Epic,28,RBS,30
+Rare,26,RBS,20
+Common,24,RBS,10
+Free,12,RBS,0

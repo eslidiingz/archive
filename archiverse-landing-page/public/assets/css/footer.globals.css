@@ -1,0 +1,49 @@
+.footer-main-bg {
+    padding: 50px;
+    border-top: 2px solid #C780B6;
+    background-color: #1b1b1b;
+}
+
+.footer-logo-size {
+    width: 300px;
+}
+
+.footer-icon-social {
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.icon-footer-facebook, .icon-footer-twitter {
+    transition: .5s;
+}
+
+.icon-footer-facebook:hover {
+    color: #285296;
+}
+
+.icon-footer-twitter:hover {
+    color: #1da1f2;
+}
+
+.footer-txt-link {
+    line-height: 28px;
+    color: #636363;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.footer-txt-link:hover {
+    color: #C780B6;
+}
+
+.footer-txt-link.disable {
+    line-height: 28px;
+    color: #3e3e3e;
+}
+
+@media (max-width: 991px) {
+    .footer-logo-size {
+        width: 100%;
+    }
+}

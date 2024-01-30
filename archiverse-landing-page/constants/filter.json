@@ -1,0 +1,12 @@
+{
+  "orderByPrice": [
+    {
+      "name": "Price high to low",
+      "value": "DESC"
+    },
+    {
+      "name": "Price low to high",
+      "value": "ASC"
+    }
+  ]
+}

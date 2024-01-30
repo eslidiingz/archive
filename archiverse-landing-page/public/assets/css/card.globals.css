@@ -1,0 +1,121 @@
+.card-homapage-content01-layout {
+    border-top: 2px solid #C780B6;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background-image: linear-gradient(#C780B6, transparent), linear-gradient(#C780B6, transparent);
+    background-size: 2px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+    padding: 30px;
+}
+
+.card-homapage-content01-icon-size {
+    width: 40px;
+    margin-bottom: 20px;
+}
+
+/* Card Content */
+.card-trending {
+    background: transparent;
+}
+
+.card-trending-detail {
+    border-bottom: 2px solid #C780B6;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-image: linear-gradient(transparent, #C780B6), linear-gradient(transparent, #C780B6);
+    background-size: 2px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+    padding: 30px;
+}
+
+.img-fix-height {
+    height: 250px;
+    object-fit: cover;
+}
+
+.img-fix-height-detail {
+    height: 630px;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.card-swaple-disabled .btn:disabled {
+    filter: grayscale(1);
+}
+
+.card-swaple-disabled {
+    filter: grayscale(1);
+    opacity: 0.8;
+}
+
+.card-swaple-layput-detail {
+    height: 230px;
+}
+
+/* Card Content*/
+
+/* Card collection  */
+.card-collection-layout {
+    background: transparent;
+    box-shadow: 2px 3px 6px 0px #00000057;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.card-collection-detail {
+    border-bottom: 2px solid #C780B6;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-image: linear-gradient(transparent, #C780B6), linear-gradient(transparent, #C780B6);
+    background-size: 2px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+    padding: 20px;
+}
+
+.card-collection-img {
+    border-radius: 10px 10px 0 0;
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-collection-imgposter {
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.position-NFT {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 25px;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-NFT-Coll {
+    width: 70px;
+    height: 70px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 5px solid hsl(0deg 0% 89% / 74%);
+    box-shadow: 2px 2px 5px 0px #00000063;
+}
+
+/* Card collection  */
+
+/* Card explore  */
+.card-explore {
+    background: #fff;
+    border-radius: 10px;
+}

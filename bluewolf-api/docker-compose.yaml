@@ -1,0 +1,51 @@
+version: "3.6"
+services:
+  collection:
+    image: node:16-alpine3.12
+    restart: always
+    command: yarn start
+    # command: tail -f
+    # ports:
+    #   - 3100:3100
+    working_dir: /home/node/app
+    volumes:
+      - .:/home/node/app
+    environment:
+      PORT: 3100
+      MONGODB_URI: mongodb://root:pass12345@mongodb:27017/test
+    networks:
+      - caddy
+    labels:
+      caddy: api.bluewolfnft.com
+      caddy.reverse_proxy: "{{upstreams 3100}}"
+    depends_on:
+      - mongodb
+    links:
+      - "mongodb:mongodb"
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=pass12345
+    volumes:
+      - mongodb-data:/data/db
+    ports:
+      - 27017:27017
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo 10.10.10.60:27017/test --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - caddy
+
+volumes:
+  mongodb-data:
+    name: mongodb-data
+    external: true
+
+networks:
+  caddy:
+    external: true

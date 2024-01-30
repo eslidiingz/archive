@@ -1,0 +1,9 @@
+.modal-gacha .modal-dialog {
+  max-width: 560px;
+  width: 100%;
+}
+
+.modal-gacha .modal-content {
+  background-color: #000000b5;
+  border: 1px solid #9e9e9e73;
+}

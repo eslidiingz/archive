@@ -1,0 +1,135 @@
+@url = https://api.bitmonsternft.com/api/v1
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDg3NTM2ZjE3YjY5MDAxYzcwZmFlYSIsIndhbGxldEFkZHJlc3MiOiIweGJCNmY2NTViYTNGYjE5NGMwNDhlMzc4MjJFNmRkYzE3NzE3ZjIzMzgiLCJleHAiOjE2NTEzNDA3ODcsImlhdCI6MTY0ODkyMTU4N30.1HgGrV28VmytV1GKOSlUm1EgESA8hyVki4dvEWe4wPc
+@user_land_id = 6242c99085e1da25e1718ba6
+
+### Login
+POST {{url}}/users/login
+content-type: application/json
+
+{
+    "walletAddress": "0x14eD29438789299b0C69f698e9C9ea4B40e49625"
+}
+
+### Change Username
+PUT {{url}}/users/update/name
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+    "name": "KitAyu"
+}
+
+### Buy Asset
+POST {{url}}/Inventory/buy
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+    "assetId": "62427bfaf4647c619e52b456",
+    "assetAmount": "10"
+}
+
+### Buy Land
+POST {{url}}/userLands/buy
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+    "id": "62413351f4647c619e52b1a6"
+}
+
+
+
+### Assign Asset
+PUT {{url}}/userLands/assignAsset
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+    "id": "{{user_land_id}}",
+    "assetId": "62427bfaf4647c619e52b456"
+}
+
+### Assign Monster
+PUT {{url}}/userLands/assignMonster
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+    "id": "{{user_land_id}}",
+    "monsterId": "6241bccbf4647c619e52b444"
+}
+
+###
+GET {{url}}/userLands/getWithOwner
+Authorization: Bearer {{access_token}}
+
+
+### Stake Log
+GET {{url}}/stakelog
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+### Stake Manual
+POST {{url}}/stakelog
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+
+}
+
+### Unstake
+POST {{url}}/stakelog/unstake
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+    "token": "RBS"
+}
+
+###
+GET {{url}}/claim
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+###
+GET {{url}}/claim/latest
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+###
+GET {{url}}/users/server-time
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+###
+GET {{url}}/config
+
+###
+POST {{url}}/config
+Content-Type: application/json
+
+{
+    "key": "BINANCE_RPC_URL",
+    "value": "https://data-seed-prebsc-1-s1.binance.org:8545",
+    "type": "local" 
+}
+###
+GET {{url}}/users?address=0x14eD29438789299b0C69f698e9C9ea4B40e49625
+
+###
+GET {{url}}/lands/getDefault
+
+###
+GET {{url}}/users/account
+Authorization: Bearer {{access_token}}
+
+###
+PUT {{url}}/userLands/resetAsset
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+    "id": "62498128e7e60d001ba0f2f9"
+}

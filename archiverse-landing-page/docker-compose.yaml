@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  frontend:
+    restart: always
+    build: .
+    # ports:
+    #   - "3000:3000"
+    # environment:
+    #   PORT: 3000
+    labels:
+      caddy: achiverse.dev.multiverseexpert.io
+      caddy.reverse_proxy: "{{upstreams 3000}}"
+    networks:
+      - caddy
+
+networks:
+  caddy:
+    external: true

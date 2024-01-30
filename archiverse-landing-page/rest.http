@@ -1,0 +1,27 @@
+# @host=https://api.swaple.app
+# @api_key=ZV$tz4qbu^sEBhSk
+
+# GET {{host}}/oracle/1
+# Content-Type: application/json
+# API-KEY: {{api_key}}
+
+@url=https://api.swaple.app/bridge-lock
+@api_key=1234
+
+POST {{url}}
+X-API-KEY: {{api_key}}
+Content-Type: application/json
+
+{
+    "chain": "bsc"
+}
+
+###
+POST {{url}}/bridge/lock
+X-API-KEY: {{api_key}}
+Content-Type: application/json
+
+{
+    "chain": "bsc",
+    "message": "1bdf49901e4e012883677ab1718a28fb93be01f26d4301e805dd1ac1617254080431caaa997456102e8b072b39e00242a9ecdb8104e85c579efe018b6b76089d37741bc74567433516dfa3afb1afa9f1cd5c53e7937c67ea9c6520f152e2a9f4142df2a4a29ef549ca62ca820189f945b29851fcaa68edf12ef3f17c25469d704aa1878aa3571e2486dce1a09b48a6c8630728d4a0f0e4f0b89ffd6d9903e318d45b6a13f0436065fb8ed37fd679c70f1937165d41c2e6842f286ae33fc3464d5ce2d4b24961f9765e762a3fac283ad6af9852b242251a2dabf2bc161e6de39d"
+}

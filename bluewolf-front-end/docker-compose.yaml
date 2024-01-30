@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  frontend:
+    image: node:16-alpine3.12
+    restart: always
+    # command: tail -f
+    # command: yarn start
+    # working_dir: /home/node/app
+    # volumes:
+    #   - ./:/home/node/app
+    build: .
+    environment:
+      PORT: 3000
+    labels:
+      caddy_1: staging.bluewolfnft.com
+      caddy_1.reverse_proxy: "{{upstreams 3000}}"
+      caddy_2: staging.bluewolfnft.com
+      caddy_2.reverse_proxy: "{{upstreams 3000}}"
+
+    networks:
+      - caddy
+
+networks:
+  caddy:
+    external: true

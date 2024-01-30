@@ -1,0 +1,332 @@
+.section_explorecollection {
+    background-image: url("/assets/image/archiverse/banner/slide-02-02-GW2.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 260px;
+}
+
+/* Content  */
+.hilight-sections-itempage {
+    background: linear-gradient(rgba(0, 0, 0, 0.29),
+            rgba(0, 0, 0, 0.8) 91.18%,
+            rgba(0, 0, 0, 1)),
+        url("../nft-image/ashcan-digital-hero-36-a01-1000h-2019-08.webp");
+    background-position: center;
+    background-size: cover;
+    height: 750px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 8em;
+}
+
+.img-profile-item {
+    width: 200px;
+    height: auto;
+    border-radius: 20px;
+    border: 10px solid rgba(255, 255, 255, 0.36);
+}
+
+.bg-round {
+    margin: 2em 0;
+    display: flex;
+    position: absolute;
+    top: 35em;
+    width: max-content;
+    background-color: #25d86200;
+    text-align: center;
+    color: #000;
+    border-radius: 5px;
+    box-shadow: rgb(37 216 98 / 9%) 0px 10px 36px 0px,
+        #c780b672 0px 0px 0px 1px;
+}
+
+.text-title-item {
+    font-family: Montserrat;
+    font-size: 50px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 0;
+    color: #000;
+}
+
+.text-title-sub-item {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+}
+
+.text-title-sub-link-item {
+    color: #C780B6;
+}
+
+
+.w-80-dot {
+    overflow: hidden;
+    width: 80px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.f32 {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.bg-round, .text-detail-itempage {
+    color: #000;
+}
+
+hr.line-h {
+    border: 1px solid #d2d2d23b;
+    border-radius: 5px;
+    height: 80px;
+    margin: 0 20px;
+    color: transparent;
+}
+
+.exp-tab .nav-tabs {
+    border-bottom: 0;
+    justify-content: center;
+}
+
+.nav-item {
+    font-size: 18px;
+    font-weight: 600;
+    color: #4e4e4e;
+}
+
+.exp-tab .nav-tabs .nav-link {
+    color: #000;
+    padding: 18.5px 30px;
+    border-radius: 0;
+    border: none;
+}
+
+.exp-tab .nav-tabs .nav-link.active, .exp-tab .nav-tabs .nav-link:focus, .exp-tab .nav-tabs .nav-link:hover {
+    margin: 0;
+    color: #C780B6 !important;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #C780B6;
+}
+
+.select-type-box {
+    border-image-source: url(/_next/static/media/bg-secondary.12a1bd10.svg);
+    border-image-slice: 2 2 2 2;
+    border-image-width: 4px 4px 4px 4px;
+    border-image-outset: 0 0 0 0;
+    border-image-repeat: stretch stretch;
+    border-style: solid;
+    position: relative;
+    line-height: 25px;
+    background-color: #ccc;
+    color: #000;
+    width: 180px;
+    border-color: #000;
+    border-radius: 0;
+}
+
+hr.line-itempage-status {
+    border: 2px solid #000;
+    border-radius: 5px;
+    height: 2px;
+    margin: 1.5em 0;
+}
+
+.fa-align-left {
+    font-size: 30px;
+    color: #000;
+    cursor: pointer;
+}
+
+.bg-round2 {
+    border-radius: 20px;
+    background-color: #c780b63c;
+    text-align: center;
+    color: #fff;
+    border-radius: 0;
+    box-shadow: 0 10px 27px 0 #c780b666, 0 0 0 1px #c780b680;
+    margin-bottom: 10px;
+}
+
+/* Content Collection */
+
+/* Content Token  */
+.token-txt-link {
+    font-weight: 700;
+    color: #000;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.token-txt-link:hover {
+    color: #C780B6;
+}
+
+.token-img-layout {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.token-img-size {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.token-profile-img-layout {
+    width: 50px;
+    border-radius: 15px;
+    border: 4px solid hsla(0, 0%, 59%, 0.667);
+}
+
+.token-layout-detail {
+    border: 2px solid;
+    border-radius: 0px 0px 0px 0px;
+    padding: 20px 30px;
+}
+
+.token-layout-tabel-detail {
+    border: 2px solid;
+    border-radius: 0px 0px 0px 0px;
+    padding: 20px 40px;
+    margin-top: 0;
+    border-top: none;
+    padding-bottom: 1em;
+}
+
+.token-layout-offer {
+    border: 2px solid;
+    border-radius: 0px 0px 0px 0px;
+    padding: 20px 30px;
+    margin-top: 1em;
+}
+
+.token-layout-detail-offer {
+    border: 2px solid;
+    border-radius: 0px 0px 0px 0px;
+    padding: 10px 20px;
+    margin-top: 0;
+    border-top: none;
+}
+
+.token-layout-main-act {
+    border: 2px solid;
+    border-radius: 0px 0px 0px 0px;
+    padding: 20px 30px;
+    margin-top: 1em;
+}
+
+.token-layout-detail-act {
+    border: 2px solid;
+    border-radius: 0px 0px 0px 0px;
+    padding: 10px 20px;
+    margin-top: 0;
+    border-top: none;
+}
+
+/* Content Token  */
+
+/* User page  */
+.user-ex-layout-img {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.user-ex-img-size {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.user-ex-spac-top {
+    padding: 50px 0;
+}
+
+.user-ex-profile-layout {
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.user-ex-profile-layout-wallet {
+    background-color: #C780B6;
+    padding: 1em 1.3em;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    line-height: 14px;
+    margin-top: 0;
+    color: #fff;
+}
+
+.user-ex-tab {
+    margin: 0%;
+}
+
+.user-ex-tab .nav-tabs {
+    border-bottom: 1px solid rgba(221, 225, 230, 0);
+}
+
+.user-ex-tab .nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-style: normal;
+    background-color: rgb(204 204 204);
+    border-radius: 0px;
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.user-ex-tab .nav-link:hover {
+    background-color: #C780B6;
+    border: 1px solid #C780B6;
+    box-shadow: 0 0 10px rgba(128, 62, 123, 0.67);
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 0%;
+    margin-bottom: 10px;
+}
+
+.user-ex-tab .nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    background-color: #C780B6;
+    border: 1px solid rgb(255 255 255);
+    box-shadow: 0 0 10px rgb(168 168 168 / 67%);
+    margin-bottom: 10px;
+}
+
+/* User page  */
+@media (min-width: 400px) {
+    .col-custom-header {
+        width: 50%;
+    }
+}
+
+
+
+@media (max-width: 400px) {
+    .hilight-sections-itempage {
+        height: auto;
+    }
+}

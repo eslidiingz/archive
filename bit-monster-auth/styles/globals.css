@@ -1,0 +1,29 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "lilita_oneregular";
+  src: url("/fonts/lilitaone-regular-webfont.woff2") format("woff2"),
+    url("/fonts/lilitaone-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.loading_bar {
+  font-family: "lilita_oneregular";
+  font-weight: 500;
+  color: white;
+  font-size: 20px;
+}

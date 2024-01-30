@@ -1,0 +1,139 @@
+.darkmode-toggle {
+  width: 150px;
+  height: 40px;
+  background-color: #376AF5;
+}
+
+.btn-viewmode {
+  height: 40px;
+  width: 86px;
+  border-radius: 40px;
+  margin-right: 10px;
+  border: none;
+  background-color: #f2f2f2;
+  display: block;
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.btn-viewmode.view-darkmode  {
+  background-color: #333333;
+}
+
+.btn-viewmode .view-icon {
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  border-radius: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  transition: all 0.5s ease;
+  color: #f9dc00;
+}
+.btn-viewmode.view-darkmode .view-icon  {
+  margin-left: 43px;
+  color: #9100f9;
+}
+
+.view-darkmode .bg-navbar {
+  background: #1d1d1d 0% 0% no-repeat padding-box;
+}
+
+.main-layout.view-darkmode {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.view-darkmode .text-dark {
+  color: #fff !important;
+}
+
+.view-darkmode .card {
+  background-color: #2B2B2B;
+}
+
+.view-darkmode .texthea01 {
+  color: #ffffff;
+}
+
+.view-darkmode .color-black {
+  color: #ffffff;
+}
+
+.view-darkmode .nav-item {
+  color: #ffffff;
+}
+
+.view-darkmode .bg-footer {
+  border-top: 1px solid #363636;
+}
+
+.view-darkmode .color-grey {
+  color: #AAAAAA;
+}
+
+.view-darkmode .nav-link {
+  color: #ffffff;
+}
+
+.view-darkmode .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: #ffffff;
+}
+
+.view-darkmode .events {
+  background: url("../public/assets/image/bg-wolf-dark.png") center center no-repeat;
+  background-size: 752px auto;
+  position: relative;
+  background-attachment: fixed;
+}
+.view-darkmode .headermp{
+  color: #fff;
+}
+
+.view-darkmode .bg-white-set{
+  background-color: #2B2B2B;
+}
+.view-darkmode .border-1{
+  border: 1px solid rgba(0,0,0,.125);
+}
+.view-darkmode .offcanvas{
+  background-color: #2B2B2B;
+}
+.view-darkmode .offcanvas-body > div{
+  color: #fff;
+}
+.view-darkmode .set-card h5{
+  color: #fff;
+}
+.view-darkmode .table > :not(caption) > * > *{
+  color: #fff;
+}
+.view-darkmode .collection > a {
+  color: rgb(255, 255, 255);
+}
+.view-darkmode .ui.basic.label{
+  color: #fff;
+}
+.view-darkmode .text07{
+  color: #fff ;
+}
+.view-darkmode .text02{
+  color: #fff ;
+}
+.view-darkmode .text08{
+  color: #fff ;
+}
+.view-darkmode .text03{
+  color: #fff ;
+}
+.view-darkmode .text05{
+  color: #fff ;
+}
+.view-darkmode .layouthis {
+  background-color: #ffffff0f;
+  border: 1px solid #E6E6E6;
+  border-radius: 8px;
+  margin-bottom: 2em;
+}

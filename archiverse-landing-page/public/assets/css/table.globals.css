@@ -1,0 +1,54 @@
+.table-hover>tbody>tr:hover>* {
+    color: #000 !important;
+}
+
+.table>:not(caption)>*>* {
+    padding: 20px 10px;
+}
+
+.table-hr-bottom {
+    border-bottom: 1.5px solid #d3d3d35e;
+}
+
+tr th {
+    color: #000;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 20px 10px;
+}
+
+tr td {
+    padding: 20px 10px;
+    color: #000;
+}
+
+.table-img-layout {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.table-img-size {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.table-txt-coin {
+    font-size: 10px;
+    color: #000;
+}
+
+.table-txt-size-10 {
+    font-size: 10px;
+}
+
+.table-txt-detail {
+    overflow: hidden;
+    width: 150px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}

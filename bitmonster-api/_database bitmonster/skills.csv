@@ -1,0 +1,81 @@
+_id,name,type,turn,status,num,element,energy,target,POW,ACC,CRI,effect,effectPercent,effectTurn,sound
+SK001,FIRE BOLT,Active,,,,Fire,1,1,150,85,35,Burn,30,3,SD006
+SK002,FIRE BALL,Active,,,,Fire,1,2,100,90,30,,,,
+SK003,FIRE WALL,Debuff,9,,,Fire,4,2,35,95,0,Burn,10,3,SD005
+SK004,FIRE STRIKE,Active,,,,Fire,2,2,150,85,40,,,,
+SK005,FIRE UP,Buff,5,POW,150,Fire,1,1,50,100,0,Heal,100,,EF01
+SK006,INFERNO,Active,,,,Fire,3,1,300,75,30,Burn,50,3,SD012
+SK007,PHOENIX STRIKE,Active,,,,Fire,2,2,120,60,40,Stun,50,1,
+SK008,FLAMING,Debuff,9,,,Fire,4,2,10,95,0,Burn,80,3,
+SK009,WATER BALL,Active,,,,Water,1,2,50,95,10,,,,SD007
+SK010,WATER STRIKE,Active,,,,Water,1,1,80,100,15,,,,SD008
+SK011,WATER PILLAR,Active,,,,Water,2,2,100,70,5,Wet,50,3,
+SK012,WATER UP,Buff,5,DEF,50,Water,1,2,100,100,0,Heal,100,,EF01
+SK013,WATER FALL,Active,,,,Water,2,2,120,60,5,Wet,50,3,
+SK014,TURTLE DEFENSE,Buff,4,DEF,150,Water,2,1,50,100,0,Heal,100,,EF01
+SK015,NAGA TAIL,Active,,,,Water,1,1,125,80,10,Bleeding,70,3,
+SK016,RAIN,Debuff,9,,,Water,4,2,10,95,0,Wet,80,3,
+SK017,EARTH SPIKE,Active,,,,Earth,1,2,100,65,10,Bleeding,25,3,
+SK018,TOSS,Active,,,,Earth,1,2,100,70,10,Stun,20,1,
+SK019,SAND STORM,Active,,,,Earth,2,2,70,95,20,Blind,25,3,
+SK020,EARTH UP,Buff,6,DEF,100,Earth,1,1,30,100,0,Heal,100,,
+SK021,EARTH QUAKE,Active,,,,Earth,2,2,120,80,5,Stun,25,1,
+SK022,ROAR,Debuff,9,,,Earth,3,2,50,60,0,,,,
+SK023,HORN ATTACK,Active,,,,Earth,3,1,250,50,30,Stun,90,1,
+SK024,AFTERSHOCK,Debuff,9,,,Earth,4,2,10,80,0,Stun,25,1,
+SK025,AIR STRIKE,Active,,,,Wind,1,1,135,60,20,,,,
+SK026,SLASH,Active,,,,Wind,1,2,95,65,15,,,,
+SK027,GUST,Active,,,,Wind,2,2,120,75,20,Blind,30,3,
+SK028,WIND UP,Buff,5,SPD,50,Wind,1,1,20,100,0,Heal,100,,
+SK029,HURRICANE,Active,,,,Wind,2,2,200,30,30,Stun,10,1,
+SK030,QUICK ATTACK,Active,,,,Wind,1,1,100,90,10,Stun,80,1,
+SK031,DRAGON BEAM,Active,,,,Wind,3,2,250,60,30,Burn,50,3,
+SK032,STORM,Debuff,9,,,Wind,4,2,10,90,0,Blind,80,3,
+SK033,SLAM,Active,,,,Steel,1,2,80,60,20,Stun,10,1,
+SK034,PROTECT,Buff,6,DEF,50,Steel,1,2,20,100,0,Heal,100,,
+SK035,HEAD STRIKE,Active,,,,Steel,2,1,60,95,50,Stun,90,1,
+SK036,STEEL UP,Buff,6,POW,50,Steel,1,2,50,100,0,Heal,100,,
+SK037,ECHO SLAM,Active,,,,Steel,2,2,80,60,40,Bleeding,25,3,
+SK038,WING GUARD,Buff,4,DEF,50,Steel,2,2,100,100,0,Heal,100,,
+SK039,TOXIC,Active,,,,Steel,2,1,40,95,30,Poison,95,3,
+SK040,POISON NOVA,Debuff,9,,,Steel,4,2,10,85,0,Poison,80,3,
+SK041,MOON POWDER,Active,,,,Bug,1,1,60,90,10,Sleep,90,2,
+SK042,DARK POWDER,Active,,,,Bug,1,1,65,80,15,Confusion,90,1,
+SK043,SUN POWDER,Debuff,9,,,Bug,3,2,30,60,0,Paralysis,60,3,
+SK044,BUG UP,Buff,6,SPD,40,Bug,1,2,50,100,0,Heal,100,,
+SK045,CRYSTAL POWDER,Debuff,9,,,Bug,3,2,15,70,0,Freeze,25,3,
+SK046,RUBY POWDER,Debuff,9,,,Bug,3,2,35,80,0,Burn,50,30,
+SK047,JADE POWDER,Debuff,9,,,Bug,3,2,30,90,0,Blind,60,30,
+SK048,LIGHT POWDER,Active,,,,Bug,4,2,50,80,10,Stun,90,1,
+SK049,COLD BOLT,Active,,,,Ice,1,1,80,80,35,,,,
+SK050,FROST DIVER,Active,,,,Ice,1,2,60,85,30,Freeze,50,1,
+SK051,ICE WALL,Buff,6,POW,50,Ice,1,2,30,100,0,Heal,100,,
+SK052,ICE UP,Buff,6,ACC,80,Ice,2,2,50,100,0,Heal,100,,
+SK053,ICE STORM,Active,,,,Ice,2,2,120,80,35,Freeze,50,1,
+SK054,ICE TORNADO,Active,,,,Ice,3,2,150,75,25,Freeze,80,1,
+SK055,SNOW DANCE,Debuff,9,,,Ice,4,2,50,50,0,Freeze,25,1,
+SK056,BLIZZARD,Debuff,9,,,Ice,4,2,10,95,0,Freeze,25,1,
+SK057,LIGHTNING BOLT,Active,,,,Electric,1,1,130,65,40,Paralysis,25,3,
+SK058,THUNDER,Active,,,,Electric,1,1,90,90,45,Stun,25,1,SD004
+SK059,THUNDER STORM,Active,,,,Electric,2,2,130,95,50,Paralysis,50,3,SD009
+SK060,THUNDER UP,Buff,5,POW,100,Electric,1,1,80,100,0,Heal,100,,
+SK061,SPEED LIGHT,Buff,5,SPD,50,Electric,2,1,80,100,0,Heal,100,,EF01
+SK062,TAIL ATTACK,Active,,,,Electric,2,1,200,90,30,Bleeding,50,3,SD003
+SK063,THUNDER PUNCH,Active,,,,Electric,3,1,250,65,50,Paralysis,90,3,
+SK064,SHOCK WAVE,Debuff,9,,,Electric,4,2,10,90,0,Paralysis,80,3,
+SK065,SHADOW STRIKE,Active,,,,Dark,1,1,120,85,10,,,,SD011
+SK066,SHADOW BALL,Active,,,,Dark,1,2,90,40,20,,,,
+SK067,HYPNOTIZE,Active,,,,Dark,2,2,130,95,25,Confusion,25,1,SD010
+SK068,DARK UP,Buff,6,CRI,50,Dark,1,2,10,100,0,Heal,100,,
+SK069,NIGHTMARE,Active,,,,Dark,2,1,50,80,20,Sleep,80,2,
+SK070,POWER STRIKE,Active,,,,Dark,3,2,200,95,30,Confusion,50,1,SD011
+SK071,DARK IMPACT,Active,,,,Dark,3,1,250,30,50,Stun,25,1,
+SK072,DARKNESS,Debuff,9,,,Dark,4,2,10,85,0,Confusion,25,1,
+SK073,LIGHT BOLT,Active,,,,Holy,1,1,50,85,20,,,,SD001
+SK074,HOLY HEAL,Buff,9,DEF,35,Holy,1,2,150,100,0,Heal,100,,EF01
+SK075,DUPLE LIGHT,Active,,,,Holy,2,1,120,75,20,,,,
+SK076,HOLY UP,Buff,9,POW,50,Holy,2,2,120,100,0,Heal,100,,
+SK077,SUN POWER,Active,,,,Holy,2,2,130,40,10,,,,
+SK078,SOLAR GOD,Active,,,,Holy,4,1,350,70,10,Burn,50,3,SD002
+SK079,HOLY BEAM,Active,,,,Holy,4,2,250,25,10,Stun,25,1,
+SK080,SUNNY,Debuff,9,,,Holy,4,2,10,75,0,Bleeding,80,3,SD001

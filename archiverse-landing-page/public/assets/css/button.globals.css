@@ -1,0 +1,353 @@
+/* button gradient primary  */
+.btn-primary {
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: var(--boxshadow-btn);
+    background: var(--color-gradient-blue);
+    border: 3px solid transparent;
+    height: 45px;
+    transition: .5s;
+    padding: 0;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background: var(--color-gradient-blue-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+    color: #fff;
+    background: var(--color-gradient-blue-hover);
+    border: 3px solid transparent;
+    box-shadow: var(--boxshadow-btn);
+}
+
+.btn-check:checked+.btn-primary,
+.btn-check:active+.btn-primary, .btn-primary:active, .btn-primary.active,
+.show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background: var(--color-gradient-blue-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:checked+.btn-primary:focus,
+.btn-check:active+.btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus,
+.show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: var(--boxshadow-btn);
+}
+
+.btn-primary:disabled, .btn-primary.disabled {
+    color: #fff;
+    background: var(--color-gradient-blue-hover);
+    border: 3px solid transparent;
+    opacity: .5;
+}
+
+/* button gradient primary  */
+/* button gradient secondary  */
+.btn-secondary {
+    color: #fff;
+    height: 45px;
+    transition: .5s;
+    border-radius: 10px;
+    background: var(--color-gradient-gray);
+    border: 3px solid transparent;
+    box-shadow: var(--boxshadow-btn);
+    padding: 0;
+}
+
+.btn-secondary:hover {
+    color: #fff;
+    background: var(--color-gradient-gray-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:focus+.btn-secondary, .btn-secondary:focus {
+    color: #fff;
+    background: var(--color-gradient-gray-hover);
+    border: 3px solid transparent;
+    box-shadow: var(--boxshadow-btn);
+}
+
+.btn-check:checked+.btn-secondary,
+.btn-check:active+.btn-secondary, .btn-secondary:active, .btn-secondary.active,
+.show>.btn-secondary.dropdown-toggle {
+    color: #fff;
+    background: var(--color-gradient-gray-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:checked+.btn-secondary:focus,
+.btn-check:active+.btn-secondary:focus, .btn-secondary:active:focus, .btn-secondary.active:focus,
+.show>.btn-secondary.dropdown-toggle:focus {
+    box-shadow: var(--boxshadow-btn);
+}
+
+.btn-secondary:disabled, .btn-secondary.disabled {
+    color: #fff;
+    background: var(--color-gradient-gray-hover);
+    border: 3px solid transparent;
+    opacity: .5;
+}
+
+/* button gradient secondary  */
+/* button gradient Success  */
+.btn-success {
+    color: #fff;
+    height: 45px;
+    transition: .5s;
+    border-radius: 10px;
+    background: var(--color-gradient-green);
+    border: 3px solid transparent;
+    box-shadow: var(--boxshadow-btn);
+    padding: 0;
+}
+
+.btn-success:hover {
+    color: #fff;
+    background: var(--color-gradient-green-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:focus+.btn-success, .btn-success:focus {
+    color: #fff;
+    background: var(--color-gradient-green-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:checked+.btn-success,
+.btn-check:active+.btn-success, .btn-success:active, .btn-success.active,
+.show>.btn-success.dropdown-toggle {
+    color: #fff;
+    background: var(--color-gradient-green-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:checked+.btn-success:focus,
+.btn-check:active+.btn-success:focus, .btn-success:active:focus, .btn-success.active:focus,
+.show>.btn-success.dropdown-toggle:focus {
+    color: #fff;
+    background: var(--color-gradient-green-hover);
+    border: 3px solid transparent;
+}
+
+.btn-success:disabled, .btn-success.disabled {
+    color: #fff;
+    background: var(--color-gradient-green-hover);
+    border: 3px solid transparent;
+    opacity: .5;
+}
+
+/* button gradient Success  */
+/* button gradient Danger  */
+.btn-danger {
+    color: #fff;
+    background: var(--color-gradient-red);
+    box-shadow: var(--boxshadow-btn);
+    border: 3px solid transparent;
+    padding: 0;
+    border-radius: 10px;
+    transition: .5s;
+    height: 45px;
+}
+
+.btn-danger:hover {
+    color: #fff;
+    background: var(--color-gradient-red-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:focus+.btn-danger, .btn-danger:focus {
+    color: #fff;
+    background: var(--color-gradient-red-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:checked+.btn-danger,
+.btn-check:active+.btn-danger, .btn-danger:active, .btn-danger.active,
+.show>.btn-danger.dropdown-toggle {
+    color: #fff;
+    background: var(--color-gradient-red-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:checked+.btn-danger:focus,
+.btn-check:active+.btn-danger:focus, .btn-danger:active:focus, .btn-danger.active:focus,
+.show>.btn-danger.dropdown-toggle:focus {
+    color: #fff;
+    background: var(--color-gradient-red-hover);
+    border: 3px solid transparent;
+}
+
+.btn-danger:disabled, .btn-danger.disabled {
+    color: #fff;
+    background: var(--color-gradient-red-hover);
+    border: 3px solid transparent;
+    opacity: .5;
+}
+
+/* button gradient Danger  */
+
+/* button gradient Info  */
+.btn-info {
+    color: #fff;
+    background: var(--color-gradient-purplegary);
+    border: 3px solid transparent;
+    transition: .5s;
+    border-radius: 10px;
+    padding: 0;
+    height: 45px;
+    box-shadow: var(--boxshadow-btn);
+}
+
+.btn-info:hover {
+    color: #fff;
+    background: var(--color-gradient-purplegary-hover);
+    border: 3px solid transparent;
+}
+
+.btn-info:hover {
+    color: #fff;
+    background: var(--color-gradient-purplegary-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:focus+.btn-info, .btn-info:focus {
+    color: #fff;
+    background: var(--color-gradient-purplegary-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:checked+.btn-info,
+.btn-check:active+.btn-info, .btn-info:active, .btn-info.active,
+.show>.btn-info.dropdown-toggle {
+    color: #fff;
+    background: var(--color-gradient-purplegary-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:checked+.btn-info:focus,
+.btn-check:active+.btn-info:focus, .btn-info:active:focus, .btn-info.active:focus,
+.show>.btn-info.dropdown-toggle:focus {
+    color: #fff;
+    background: var(--color-gradient-purplegary-hover);
+    border: 3px solid transparent;
+}
+
+.btn-info:disabled, .btn-info.disabled {
+    color: #fff;
+    background: var(--color-gradient-purplegary-hover);
+    border: 3px solid transparent;
+    opacity: .5;
+}
+
+/* button gradient Info  */
+/* button gradient Light  */
+.btn-light {
+    color: #fff;
+    background: var(--color-gradient-purple);
+    border: 3px solid transparent;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: var(--boxshadow-btn);
+    transition: .5s;
+    height: 45px;
+}
+
+.btn-light:hover {
+    color: #fff;
+    background: var(--color-gradient-purple-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:focus+.btn-light, .btn-light:focus {
+    color: #fff;
+    background: var(--color-gradient-purple-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:checked+.btn-light,
+.btn-check:active+.btn-light, .btn-light:active, .btn-light.active,
+.show>.btn-light.dropdown-toggle {
+    color: #fff;
+    background: var(--color-gradient-purple-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:checked+.btn-light:focus,
+.btn-check:active+.btn-light:focus, .btn-light:active:focus, .btn-light.active:focus,
+.show>.btn-light.dropdown-toggle:focus {
+    color: #fff;
+    background: var(--color-gradient-purple-hover);
+    border: 3px solid transparent;
+}
+
+.btn-light:disabled, .btn-light.disabled {
+    color: #fff;
+    background: var(--color-gradient-purple-hover);
+    border: 3px solid transparent;
+    opacity: .5;
+}
+
+/* button gradient Light  */
+
+/* button gradient dark  */
+.btn-dark {
+    color: #fff;
+    height: 45px;
+    transition: .5s;
+    border-radius: 10px;
+    background: var(--color-gradient-purpleblue);
+    border: 3px solid transparent;
+    box-shadow: var(--boxshadow-btn);
+    padding: 0;
+}
+
+.btn-dark:hover {
+    color: #fff;
+    background: var(--color-gradient-purpleblue-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:focus+.btn-dark, .btn-dark:focus {
+    color: #fff;
+    background: var(--color-gradient-purpleblue-hover);
+    border: 3px solid transparent;
+    box-shadow: var(--boxshadow-btn);
+}
+
+.btn-check:checked+.btn-dark,
+.btn-check:active+.btn-dark, .btn-dark:active, .btn-dark.active,
+.show>.btn-dark.dropdown-toggle {
+    color: #fff;
+    background: var(--color-gradient-purpleblue-hover);
+    border: 3px solid transparent;
+}
+
+.btn-check:checked+.btn-dark:focus,
+.btn-check:active+.btn-dark:focus, .btn-dark:active:focus, .btn-dark.active:focus,
+.show>.btn-dark.dropdown-toggle:focus {
+    box-shadow: var(--boxshadow-btn);
+}
+
+.btn-dark:disabled, .btn-dark.disabled {
+    color: #fff;
+    background: var(--color-gradient-purpleblue-hover);
+    border: 3px solid transparent;
+    opacity: .5;
+}
+
+/* button gradient dark  */
+
+/* Size Dropdown  */
+.dropdown-size-140 {
+    width: var(--size-button-secondary);
+}
+.dropdown-size-180 {
+    width: var(--size-button-full);
+}
+.dropdown-size-220 {
+    width: var(--size-button-full-220);
+}
+/* Size Dropdown  */

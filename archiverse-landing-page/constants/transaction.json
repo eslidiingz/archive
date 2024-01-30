@@ -1,0 +1,3 @@
+{
+  "txType": ["sell", "buy", "cancel", "mint", "accept bidding"]
+}

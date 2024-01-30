@@ -1,0 +1,174 @@
+:root {
+  --main-bg: #fff;
+  --bg-gradient-purpleblue: linear-gradient(200deg, #cd4fbd 1%, #00a3dd 100%) padding-box,
+    linear-gradient(to top, #00a3dd 25%, #c247b2) border-box;
+
+  /* Color gradient  */
+  /* maincolor  */
+  --color-gradient-blue: linear-gradient(160deg, #52E5E7 1.7%, #130CB7 114.52%) padding-box,
+    linear-gradient(to top, #322dd0e2, #7cebedea) border-box;
+  --color-gradient-blue-hover: linear-gradient(160deg, #1DEBEE 10%, #0900D2 100%) padding-box,
+    linear-gradient(to top, #0900D2, #1DEBEE) border-box;
+  --color-gradient-purplegary: linear-gradient(160deg, #97abff 10%, #5f5987 100%) padding-box,
+    linear-gradient(to top, #5f5987 11.34%, #97abff) border-box;
+  --color-gradient-purplegary-hover: linear-gradient(160deg, #7E93EE 10%, #3F3773 100%) padding-box,
+    linear-gradient(to top, #3F3773 11.34%, #7E93EE) border-box;
+  --color-gradient-purple: linear-gradient(160deg, #3b2667 10%, #bc78ec 100%) padding-box,
+    linear-gradient(to top, #bc78ec 11.34%, #3b2667) border-box;
+  --color-gradient-purple-hover: linear-gradient(160deg, #2C155C 10%, #AC5BE6 100%) padding-box,
+    linear-gradient(to top, #AC5BE6 11.34%, #2C155C) border-box;
+  --color-gradient-purpleblue: linear-gradient(160deg, #c247b2 1%, #00a3dd 100%) padding-box,
+    linear-gradient(to top, #00a3dd 25%, #c247b2) border-box;
+  --color-gradient-purpleblue-hover: linear-gradient(160deg, #A91996 1%, #008CBE 100%) padding-box,
+    linear-gradient(to top, #008CBE 11.34%, #A91996) border-box;
+  /* maincolor  */
+
+  --color-gradient-gray: linear-gradient(180deg, #3d4c66 1.7%, #455471 114.52%) padding-box,
+    linear-gradient(169deg, #79808f, #232d3f 74.79%) border-box;
+  --color-gradient-gray-hover: linear-gradient(180deg, #39475f 1.7%, #36425c 114.52%) padding-box,
+    linear-gradient(169deg, #6a707e, #121823 74.79%) border-box;
+  --color-gradient-green: linear-gradient(160deg, #1BDB7F 1.7%, #0CA5A5 114.52%) padding-box,
+    linear-gradient(to top, #1BDB7F 11.34%, #0CA5A5) border-box;
+  --color-gradient-green-hover: linear-gradient(180deg, #0cc96d 1.7%, #059494 114.52%) padding-box,
+    linear-gradient(to top, #16ce75 11.34%, #099393) border-box;
+  --color-gradient-red: linear-gradient(180deg, #DB2969 1.7%, #971169 114.52%) padding-box,
+    linear-gradient(to top, #800c57 11.34%, #be205a) border-box;
+  --color-gradient-red-hover: linear-gradient(180deg, #e61562 1.7%, #c01283 114.52%) padding-box,
+    linear-gradient(to top, #8a0d5e 11.34%, #c91f5d) border-box;
+
+  --color-gradient-input: linear-gradient(160deg, #ffffff 10%, #ffffff) padding-box, linear-gradient(to top, #7e6aff 11.34%, #97abff) border-box;
+  --color-gradient-darkcontent: linear-gradient(169.98deg,
+      rgba(53, 63, 84, 0.6) 27.98%,
+      rgba(34, 40, 52, 0.6) 81.2%);
+  /* Color gradient  */
+
+  --boxshadow-btn: 0px 2px 4px rgba(26, 31, 44, 0.6);
+
+  /* font  */
+  --font-prompt: 'Prompt';
+  --font-inter: 'Inter';
+  /* font  */
+
+  /* size button */
+  --size-button-full-220: 220px;
+  --size-button-full: 180px;
+  --size-button-secondary: 140px;
+  /* size button */
+
+  /* bg Navbar  */
+  --bg-navbar: rgb(0 0 0 / 0%);
+}
+
+@media (max-width: 991px) {
+  :root {
+    --size-button-full-220: 100%;
+    --size-button-full: 100%;
+    --size-button-secondary: 100%;
+  }
+}
+
+body {
+  background: var(--main-bg);
+  color: #000;
+  font-family: var(--font-inter), var(--font-prompt);
+}
+
+/* space  */
+section {
+  padding: 80px 0;
+}
+
+/* space  */
+
+/* Size Font  */
+
+h1 {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+h6 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* text detail  */
+p {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+/* Size Font  */
+
+/* ci color  */
+.ci-purple {
+  color: #3b2667;
+}
+
+.ci-purplepink {
+  color: #C780B6;
+}
+
+.ci-white {
+  color: #fff;
+}
+
+.ci-black {
+  color: #000;
+}
+
+/* ci color  */
+
+/* Text line dot  */
+.twoline-dot {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.twoline-dot2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.twoline-dot3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Text line dot  */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+@media(max-width: 567px) {
+  section {
+    padding: 50px 0;
+  }
+}

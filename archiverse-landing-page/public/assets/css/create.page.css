@@ -1,0 +1,74 @@
+.create-box-layout {
+    background: #fff;
+    border: 2px solid #C780B6;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 2px 3px 10px 0px #00000066;
+}
+
+.create-box-layout .custom-file-upload {
+    border: 2px solid #cccccc3b;
+    display: inline-block;
+    padding: 42px 12px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    border-style: dashed;
+    border-radius: 10px;
+    background-color: #15151533;
+}
+
+
+.layout_profile-btn .create-box-layout {
+    background-color: #592d572e;
+    padding: 15px;
+    text-align: center;
+    color: #fff;
+    border: 2px solid #592d57;
+    border-radius: 1rem;
+}
+
+.container .create-box-layout {
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+
+.custom-file-upload {
+    border: 2px solid #ccc;
+    display: inline-block;
+    padding: 42px 12px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    border-style: dashed;
+    border-radius: 10px;
+}
+
+input[type=file] {
+    display: none;
+}
+
+.create-detail-txt {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.highlightOption {
+    background: #3b2667 !important;
+    color: #fff !important;
+}
+
+.multiSelectContainer li {
+    padding: 10px;
+    color: #000;
+}
+
+.multiSelectContainer li:hover {
+    background: #3b2667 !important;
+    color: #fff;
+    cursor: pointer;
+}

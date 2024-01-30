@@ -1,0 +1,2053 @@
+{
+	"info": {
+		"_postman_id": "72824bfd-00ef-46ef-a35e-b11a51bd3c32",
+		"name": "Bitmonster",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2554916"
+	},
+	"item": [
+		{
+			"name": "Test",
+			"item": []
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Insert monster",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"walletAddress\":\"0xE40845297c6693863Ab3E10560C97AACb32cbc6C\",\n    \"id\":\"6241bccbf4647c619e52b433\",\n    \"default\":false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/admin/monster",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"admin",
+								"monster"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert land",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"walletAddress\":\"0xE40845297c6693863Ab3E10560C97AACb32cbc6C\",\n    \"landCode\": 3,\n    \"zone\": 1,\n    \"index\": 5,\n    \"default\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/admin/land",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"admin",
+								"land"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"walletAddress\":\"0xE40845297c6693863Ab3E10560C97AACb32cbc6C\",\n    \"assetId\":\"62904bf91e6b89030d2a0260\",\n    \"assetAmount\":200,\n    \"assetTypeAmount\":false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/admin/item",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"admin",
+								"item"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"pm.environment.set(\"accessToken\", response.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"walletAddress\":\"0xE40845297c6693863Ab3E10560C97AACb32cbc6C\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/users/login",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accessToken\" : \"{{accessToken}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/users/refresh-token",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"users",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"EIEI2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/users/update/name",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"users",
+								"update",
+								"name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/users/account",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"users",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update energy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/users/updateEnergy",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"users",
+								"updateEnergy"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lands",
+			"item": [
+				{
+					"name": "Get default",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/lands",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"lands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get land class",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/landClass",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"landClass"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get land code",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/landCode",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"landCode"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Assets",
+			"item": [
+				{
+					"name": "Get asset",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"page\":1,\n    \"size\":1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/assets",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/assets/getAll",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"assets",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update comma",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/assets/updateComma",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"assets",
+								"updateComma"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get default",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/assets/getDefault",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"assets",
+								"getDefault"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get type item",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/metadata/type/item",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"metadata",
+								"type",
+								"item"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Monster",
+			"item": [
+				{
+					"name": "Get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/monsters/getAll",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"monsters",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get filter",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"page\":1,\n   \"size\":100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/monsters/",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"monsters",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get with Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/monsters/623c1ef56db77a6b0646439a",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"monsters",
+								"623c1ef56db77a6b0646439a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get default",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/monsters/getDefault",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"monsters",
+								"getDefault"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Lands",
+			"item": [
+				{
+					"name": "Land",
+					"item": [
+						{
+							"name": "Buy (insert)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"landClass\": \"Legendary\",\n    \"landCode\": \"L3\",\n    \"zone\": 1,\n    \"index\": 5,\n    \"default\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/userLands/buy",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"userLands",
+										"buy"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update active",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"62999204cdfd6207be15e423\",\n    \"active\":true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/userLands/updateActive",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"userLands",
+										"updateActive"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Asset",
+					"item": [
+						{
+							"name": "Assign asset",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"62920e2346f553261c2ef238\",\n    \"assetId\": \"62909ff31e6b89030d2a047d\",\n    \"assetType\":true,\n    \"x\":0,\n    \"y\":0\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/userLands/assignAsset",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"userLands",
+										"assignAsset"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset asset",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"627e3682eaeb4f1e371055cc\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/userLands/resetAsset",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"userLands",
+										"resetAsset"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove asset",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"627e3682eaeb4f1e371055cc\",\n    \"assignId\":\"62825345340b65082a7b916e\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/userLands/removeAsset",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"userLands",
+										"removeAsset"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Monster",
+					"item": [
+						{
+							"name": "Assign monster",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"62999204cdfd6207be15e423\",\n    \"farmId\":\"629d6cc8e754e23069b1c462\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/userLands/assignMonster",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"userLands",
+										"assignMonster"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove monster",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"624657d628dbff90490a7cef\",\n    \"assignId\":\"6246e6d2c2fdeebf0e4e3e94\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/userLands/removeMonster",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"userLands",
+										"removeMonster"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Evo monster",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"6270a4f3ff5df907541bf7e0\",\n    \"monsterIdInLand\":\"6270a5da328dbe07aa12e3d2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/userLands/evoMonster",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"userLands",
+										"evoMonster"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Sync data",
+					"item": [
+						{
+							"name": "Update asset in land",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"626a690432e59121cb3437ae\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/userLands/updateAssetInLands",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"userLands",
+										"updateAssetInLands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update monster in land",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"624657d628dbff90490a7cef\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/userLands/updateMonsterEatInLand",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"userLands",
+										"updateMonsterEatInLand"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update habit monster in land",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"626bb205f333891307653fd6\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/userLands/updateMonsterEatInLand",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"userLands",
+										"updateMonsterEatInLand"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sync lands",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/userLands/updateInLands",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"userLands",
+										"updateInLands"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get with owner",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"active\":true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/userLands/getWithOwner",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"userLands",
+								"getWithOwner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset land",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"627e3682eaeb4f1e371055cc\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/userLands/resetLand",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"userLands",
+								"resetLand"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Farm",
+			"item": [
+				{
+					"name": "Buy (insert)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"6295fd839920171b183b3bd3\",\n    \"default\":false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/farms/buy",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"farms",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/farms/",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"farms",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get with owner",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/farms/getWithOwner",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"farms",
+								"getWithOwner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reborn",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"farmId\":\"62a1661163ce66128a9835eb\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/farms/reborn",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"farms",
+								"reborn"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "Buy (insert)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"user-agent": true,
+							"host": true,
+							"accept": true,
+							"accept-encoding": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"assetId\":\"6291ed155800ec173d3fa5c7\",\n    \"assetAmount\":200,\n    \"assetTypeAmount\":false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/Inventory/buy",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"Inventory",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get with owner",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\":\"BUILD\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/Inventory/getWithOwner",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"Inventory",
+								"getWithOwner"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Idle",
+			"item": [
+				{
+					"name": "Stake",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/stakelog/",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"stakelog",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unstake",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\":\"RBS\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/stakelog/unstake",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"stakelog",
+								"unstake"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ranking",
+			"item": [
+				{
+					"name": "End match",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reports\":[\n        {\n            \"walletAddress\":\"0x7E1494B8EcF5d853829aD0e0D710340aFd217C98\",\n            \"score\":-3\n        },\n        {\n            \"walletAddress\":\"0xB5ed5fbe8f0fe5B48069082a5803D67E282288d9\",\n            \"score\":5\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/ranking/endMatch",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"ranking",
+								"endMatch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Start match",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reports\":[\n        {\n            \"walletAddress\":\"0x7E1494B8EcF5d853829aD0e0D710340aFd217C98\"\n        },\n        {\n            \"walletAddress\":\"0xfe2058c888d4393ee30029967E560F7b52507C50\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/ranking/startMatch",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"ranking",
+								"startMatch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "test",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/ranking/test",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"ranking",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ranking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/ranking?type=week",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"ranking"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "week"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Evo",
+			"item": [
+				{
+					"name": "Evo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/evo",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"evo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Skill",
+			"item": [
+				{
+					"name": "All skill",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/skill/",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"skill",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Signature",
+			"item": [
+				{
+					"name": "Monster",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"farmId\":\"629d6f5589f94c001e28fd1d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/sig/monster/",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"sig",
+								"monster",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Monster Confirm",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"farmId\":\"6296dec2a882d23bec67fa9f\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/sig/confirmMonster/",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"sig",
+								"confirmMonster",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Land",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userLandId\":\"62961d2c62cc13001e338c92\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/sig/land/",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"sig",
+								"land",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Land Confirm",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userLandId\":\"6296dec2a882d23bec67fa9d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/sig/confirmLand/",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"sig",
+								"confirmLand",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itemId\":\"6291ed155800ec173d3fa5c3\",\r\n    \"amount\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/sig/item/",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"sig",
+								"item",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Item Confirm",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itemId\":\"6291ed155800ec173d3fa5c7\",\r\n    \"amount\":99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/sig/confirmItem/",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"sig",
+								"confirmItem",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Metadata",
+			"item": [
+				{
+					"name": "Monster",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/metadata/monster/35",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"metadata",
+								"monster",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Land",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/metadata/land/1201",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"metadata",
+								"land",
+								"1201"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Item",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/metadata/item/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"metadata",
+								"item",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stack log",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/stakelog",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"stakelog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get with owner",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/claim/latest",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"claim",
+								"latest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Stack",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\":\"DMS\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/stakelog/unstake",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"stakelog",
+								"unstake"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pool",
+			"item": [
+				{
+					"name": "Init pool",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/pool/initPool",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"pool",
+								"initPool"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add pool",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\":30\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/pool/addPool",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"pool",
+								"addPool"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pool",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/pool",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"pool"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Server time",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/users/server-time",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"users",
+						"server-time"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,207 @@
+html, body {
+    overflow: unset;
+}
+
+.index-layout .sidebar {
+    position: sticky;
+    top: 28px;
+    max-height: unset;
+}
+
+.index-layout .content {
+    width: calc(100% - 310px - 1.5rem);
+}
+
+.card-monster {
+    width: 100%;
+    display: flex;
+    position: relative;
+    background-color: #0c2237;
+    padding: 15px;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.card-monster .col-left {
+    width: 120px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-monster .col-left img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card-monster .col-right {
+    width: calc(100% - 120px);
+    height: 100%;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-monster-type {
+    font-size: 12px;
+    background-image: url('/assets/img/normal-5.webp');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    width: 80px;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-monster-status {
+    display: flex;
+    align-items: center;
+}
+
+.card-monster-status-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.card-monster-status-text {
+    width: 70%;
+    margin: 0px;
+    font-size: 15px;
+    color: #fe9d47;
+    padding-left: 4px;
+}
+
+.card-item-status-text {
+    width: 100%;
+    margin: 0px;
+    font-size: 15px;
+    color: #fe9d47;
+}
+
+.card-monster-price {
+    color: #ffffff;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+}
+
+.card-monster-price .card-monster-price-title {
+    color: #5e6d7b;
+    margin-right: auto;
+    text-align: left;
+    font-size: 14px;
+}
+.card-monster-price .card-monster-price-value {
+    margin-left: auto;
+    text-align: right;
+    color: #fef02f;
+    font-size: 24px;
+    line-height: 27px;
+}
+
+.btn-monster-cancel {
+    width: 100%;
+    height: auto;
+    padding: 2%;
+    border: 2px solid #fe2b00;
+    background: #e00000;
+    color: #fff;
+    border-radius: 6px;
+}
+
+.btn-monster-approve {
+    width: 100%;
+    height: auto;
+    padding: 2%;
+    border: 2px solid #ff9800;
+    background: #ffc107;
+    color: #fff;
+    border-radius: 6px;
+}
+
+.btn-monster-purchase {
+    width: 100%;
+    height: auto;
+    padding: 2%;
+    border: 2px solid #1787d9;
+    background: #23b9ed;
+    color: #fff;
+    border-radius: 6px;
+}
+.card-monster-header {
+    margin-top: auto;
+    top: 0px;
+    width: 100%;
+}
+.card-monster-footer {
+    margin-top: auto;
+    bottom: 15px;
+    position: absolute; 
+    width: calc(100% - 160px);
+}
+
+.btn-item-type {
+    background-size: 100% 100%;
+}
+
+.loading-screen {
+    height: 400px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.select-sidebar-box {
+    margin-bottom: 15px;
+}
+
+.select-sidebar-box .font-small {
+    line-height: 12px;
+    height: 15px;
+    display: block;
+    margin-top: 4px;
+    font-size: 16px;
+}
+
+.text-notfound {
+    color: #314a63;
+}
+
+.select-sidebar-box .form-check-marketplace .form-check-input {
+    margin-top: 4px;
+}
+@media (max-width: 991.98px) {
+
+    .index-layout {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .index-layout .sidebar {
+        position: relative;
+        top: unset;
+        display: block;
+    }
+
+    .index-layout .content {
+        width: 100%;
+        display: block;
+    }
+
+    .container, .container-sm {
+        max-width: 100%
+    }
+    
+}

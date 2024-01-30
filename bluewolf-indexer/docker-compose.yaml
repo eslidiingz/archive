@@ -1,0 +1,63 @@
+version: '3.6'
+services:
+  indexer:
+    image: node:18-alpine3.14
+    restart: always
+    # command: tail -f
+    command: yarn dev
+    working_dir: /home/node/app
+    volumes:
+      - .:/home/node/app
+    networks:
+      - caddy
+    environment:
+      DATABASE_URL: postgresql://postgres:dev1Mex@postgres:5432/postgres
+      WS_RPC_URL: https://nd-000-791-964.p2pify.com/9d72fc41e88bfa945e49d73b3645fe81
+      MARKET_ADDRESS: 0xae4bDf34fe19c431174efbC60015B4c37C26c87B
+      MARKET_START_BLOCK: 20875170
+      NFT_ADDRESS: 0x2C837a56C747559F372F2fccB303cA97482C59f8
+      NFT_START_BLOCK: 20875089 
+    
+  postgres:
+    image: postgres:12
+    restart: always
+    volumes:
+    - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: dev1Mex
+    ports:
+    - "5432:5432"
+    networks:
+      - caddy
+
+  graphql-engine:
+    image: hasura/graphql-engine:v2.7.0
+    # ports:
+    # - "8080:8080"
+    networks:
+      - caddy
+    depends_on:
+    - "postgres"
+    restart: always
+    labels:
+      caddy: staging-indexer.bluewolfnft.com
+      caddy.reverse_proxy: "{{upstreams 8080}}"
+    environment:
+      ## postgres database to store Hasura metadata
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:dev1Mex@postgres:5432/postgres
+      ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
+      PG_DATABASE_URL: postgres://postgres:dev1Mex@postgres:5432/postgres
+      ## enable the console served by server
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      ## enable debugging mode. It is recommended to disable this in production
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      ## uncomment next line to set an admin secret
+      HASURA_GRAPHQL_ADMIN_SECRET: dev1Mex
+
+volumes:
+  db_data:
+
+networks:
+  caddy:
+    external: true

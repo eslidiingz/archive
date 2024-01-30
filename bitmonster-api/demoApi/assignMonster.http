@@ -1,0 +1,54 @@
+
+@domain = http://localhost:3001
+@prefix = /api/v1
+@url = {{domain}}{{prefix}}
+@wallet = 0xE40845297c6693863Ab3E10560C97AACb32cbc6C
+### ==================================================================
+# @name login
+POST {{url}}/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "walletAddress": "{{wallet}}"
+}
+### ==================================================================
+# @name getUserLand
+GET {{url}}/userLands/getWithOwner HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.accessToken}}
+### ==================================================================
+# @name activeLand
+PUT {{url}}/userLands/updateActive HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.accessToken}}
+
+{
+    "id":"{{getUserLand.response.body.$[0].id}}",
+    "active":true
+}
+### ==================================================================
+# @name getMonster
+GET {{url}}/farms/getWithOwner HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.accessToken}}
+### ==================================================================
+# @name assignMonster
+PUT {{url}}/userLands/assignMonster HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.accessToken}}
+
+{
+    "id":"{{getUserLand.response.body.$[0].id}}",
+    "farmId":"{{getMonster.response.body.monsters.$[0]._id}}"
+}
+### ==================================================================
+# @name removeMonster
+PUT {{url}}/userLands/removeMonster HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.accessToken}}
+
+{
+    "id":"{{getUserLand.response.body.$[0].id}}",
+    "assignId":"{{getUserLand.response.body.$[0].monsters.$[0]._id}}"
+}
+### ==================================================================

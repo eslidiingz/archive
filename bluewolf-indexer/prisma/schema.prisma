@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id     Int    @id @default(autoincrement())
+  wallet String
+  NFT    NFT[]
+}
+
+model NFT {
+  id              Int    @id @default(autoincrement())
+  contractAddress String
+  tokenId         String
+  ownerId         Int
+  owner           User   @relation(fields: [ownerId], references: [id])
+}
+
+model TransactionType {
+  id   Int    @id @default(autoincrement())
+  type String
+}
+
+model ItemHistory {
+  id                   Int       @id @default(autoincrement())
+  event                String?
+  blockHash            String?
+  nftContract          String?
+  orderId              BigInt?
+  tokenId              BigInt?
+  owner                String?
+  seller               String?
+  buyer                String?
+  price                Float?
+  fee                  Float?
+  buyWithTokenContract String?
+  isOpen               Boolean?
+  isSold                 Boolean?
+  offerId              BigInt?
+  isOffered              Boolean?
+  timestamp            DateTime?
+  transactionHash      String?
+}

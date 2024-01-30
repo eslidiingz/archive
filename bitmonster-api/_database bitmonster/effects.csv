@@ -1,0 +1,10 @@
+pic,name,sound
+PE00,Heal,EF01
+PE01,Bleeding,EF02
+PE02,Burn,EF03
+PE03,Confusion,EF04
+PE04,Paralysis,EF05
+PE05,Stun,EF06
+PE06,Freeze,EF07
+PE07,Blind,EF08
+PE08,Poison,EF09
